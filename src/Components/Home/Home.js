@@ -1,14 +1,21 @@
 import React from 'react';
-import Loading from '../Loading/Loading';
-import SmallLoaing from '../Loading/SmallLoading/SmallLoaing';
+import AboutUs from './AboutUs/AboutUs';
+import Banner from './Banner/Banner';
+import Catagories from './Catagories/Catagories';
+import Products from './Products/Products';
 
 const Home = () => {
     const first = process.env.REACT_APP_STRIPE_PK;
     console.log(first)
     return (
         <div>
-            <h2>This is home</h2>
-
+            <Banner></Banner>
+            <h2 className='text-3xl text-amber-900 font-bold text-center my-24'>Our Products</h2>
+            <Products></Products>
+            <h2 className='text-3xl text-amber-900 font-bold text-center my-24'>Select a catagory</h2>
+            <Catagories></Catagories>
+            <h2 className='text-3xl text-amber-900 font-bold text-center mt-24'>About us</h2>
+            <AboutUs></AboutUs>
         </div>
     );
 };
