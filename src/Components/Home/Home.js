@@ -7,10 +7,8 @@ const Home = () => {
     console.log(first)
     return (
         <div>
-            {/* <h2>This is home</h2>
-             */}
-            <Loading></Loading>
-            <button className='btn gap-2'>Homeee <SmallLoaing></SmallLoaing></button>
+            <h2>This is home</h2>
+
         </div>
     );
 };
