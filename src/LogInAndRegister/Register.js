@@ -75,12 +75,12 @@ const Register = () => {
                     {errors.password && <p role='alert' className="text-warning">{errors.password.message}</p>}
 
 
-                    <input className="btn btn-accent mt-4" value='Sign up' type="submit" />
+                    <input className="btn bg-amber-900 text-white w-full my-4" value='Sign up' type="submit" />
 
 
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
                 </form>
-                <p>Already have an account? <Link to='/login'>Log in</Link></p>
+                <p className='text-amber-900'>Already have an account? Please <Link className='text-amber-700' to='/login'>Log in</Link></p>
 
             </div>
         </div>

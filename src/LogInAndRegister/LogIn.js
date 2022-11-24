@@ -37,15 +37,15 @@ const LogIn = () => {
 
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
-                    <input className='btn btn-accent w-full my-4' value="Login" type="submit" />
+                    <input className='btn bg-amber-900 text-white w-full my-4' value="Login" type="submit" />
                     <div>
                         {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
                     </div>
                 </form>
                 {/* <label className="label"> <button className="label-text" onClick={handleSubmit(handleforgetPassword)}>Forget Password?</button></label> */}
-                <p>Dont have any Account<Link className='text-secondary' to="/register">Create new Account</Link></p>
+                <p className='text-amber-900'>New to Kather Ghor? <Link className='text-amber-700' to="/register">Create new Account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button className='btn text-amber-900 btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
