@@ -1,20 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { DarkLightContext } from '../../../Context/DarkandLightModeProvider';
-import { FaMoon, FaSun } from 'react-icons/fa';
 import KatherGhor from '../../../assets/KatherGhor.png';
 
 const Navbar = () => {
-    const { theme, setTheme } = useContext(DarkLightContext);
-    const handleNight = () => {
-        const newTheme = false;
-        setTheme(newTheme);
-    }
-    const handleDay = () => {
-        const newTheme = true;
-        setTheme(newTheme);
 
-    }
     return (
 
         <div className="navbar bg-base-100">
@@ -69,13 +58,6 @@ const Navbar = () => {
                 </div> : <button className="btn btn-sm bg-amber-900 text-white btn-outline" ><Link to='/login'>Log in</Link></button>
             </div>
         </div >
-
-
-        // <div className="navbar-end">
-        //     {theme ? <button className='btn btn-ghost' onClick={handleNight}>
-        //         <FaMoon />
-        //     </button> : <button className='btn btn-ghost' onClick={handleDay}><FaSun /></button>}
-        // </div>
 
     );
 };

@@ -8,8 +8,8 @@ const AboutUs = () => {
         <div className="hero mt-11 mb-32">
             <div className="hero-content flex-col lg:flex-row">
                 <div className='relative w-1/2'>
-                    <img alt='' src={furnimg} className="w-4/5 h-full rounded-full shadow-2xl" />
-                    <img alt='' src={furnimg2} className="absolute w-3/5 right-5 border-8 top-1/2 rounded-full shadow-2xl" />
+                    <img alt='' src={furnimg} className="w-4/5 h-full rounded-full border-8 border-amber-900 shadow-2xl" />
+                    <img alt='' src={furnimg2} className="absolute w-3/5 right-5 border-8 border-amber-900 top-1/2 rounded-full shadow-2xl" />
                 </div>
                 <div className='w-1/2'>
                     <h1 className="text-5xl my-5 text-amber-800 font-bold">I am qualified <br />  & of experience <br /> in this field</h1>

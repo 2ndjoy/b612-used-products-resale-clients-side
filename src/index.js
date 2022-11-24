@@ -3,15 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import DarkandLightModeProvider from './Context/DarkandLightModeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DarkandLightModeProvider>
-      <App />
-
-    </DarkandLightModeProvider>
+    <App />
   </React.StrictMode>
 );
 
