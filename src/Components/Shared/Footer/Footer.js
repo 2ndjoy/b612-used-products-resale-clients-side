@@ -1,10 +1,10 @@
 import React from 'react';
 import katherGhor from '../../../assets/KatherGhor2.png'
-
+import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-black text-white mt-3">
+        <footer className="footer footer-center p-10 bgcolor text-white mt-3">
             <div>
                 <img src={katherGhor} className='mb-2 h-9' alt="" />
                 <p className="font-bold">
