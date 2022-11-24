@@ -12,18 +12,19 @@ const Register = () => {
     const imageHostKEy = process.env.REACT_APP_IMGB_APIKEY;
     console.log(imageHostKEy);
     const handleSignUp = (data) => {
-        console.log(imageHostKEy)
-        const photo = data.photo[0];
-        const formData = new FormData();
-        formData.append('image', photo);
+        // console.log(imageHostKEy)
+        // const photo = data.photo[0];
+        // const formData = new FormData();
+        // formData.append('image', photo);
 
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKEy}`
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+        // const url = `https://api.imgbb.com/1/upload?key=${imageHostKEy}`
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
+        console.log(data)
     }
 
 
@@ -61,6 +62,18 @@ const Register = () => {
                         />
                     </div>
                     {errors.photo && <p role='alert' className="text-warning">{errors.photo.message}</p>}
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Want to Join as a seller</span>
+                        </label>
+                        <select className="select input-bordered w-full max-w-xs" {...register("role")}>
+                            <option disabled selected>Select a role</option>
+                            <option value="seller">Seller</option>
+                            <option value="buyer">No, I am just here to buy</option>
+
+                        </select>
+                    </div>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

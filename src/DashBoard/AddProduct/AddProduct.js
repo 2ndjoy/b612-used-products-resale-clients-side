@@ -10,11 +10,11 @@ const AddProduct = () => {
         <div className='grid justify-center py-11'>
 
             <div className='w-96 p-7'>
-                <h2 className='text-3xl font bold text-center mt-11'>Add product</h2>
+                <h2 className='text-3xl font bold text-center mt-11 mb-9'>Add product</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Product Name</span>
                         </label>
                         <input
                             className="input input-bordered w-full max-w-xs" {...register("name", { required: 'Name is required' })} type='text'
@@ -23,13 +23,34 @@ const AddProduct = () => {
                     {errors.name && <p role='alert' className="text-warning">{errors.name.message}</p>}
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Price</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("email", { required: 'Email is required' })} type='email'
+                            className="input input-bordered w-full max-w-xs" {...register("price", { required: 'Email is required' })} type='text'
                         />
                     </div>
-                    {errors.email && <p role='alert' className="text-warning">{errors.email.message}</p>}
+                    {errors.price && <p role='alert' className="text-warning">{errors.price.message}</p>}
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Condition</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("condition", { required: 'Email is required' })} type='text'
+                        />
+                    </div>
+                    {errors.condition && <p role='alert' className="text-warning">{errors.condition.message}</p>}
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Phone number</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("sellerPhoneNumber", { required: 'Email is required' })} type='text'
+                        />
+                    </div>
+                    {errors.sellerPhoneNumber && <p role='alert' className="text-warning">{errors.sellerPhoneNumber.message}</p>}
+
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -41,17 +62,16 @@ const AddProduct = () => {
                     </div>
                     {errors.photo && <p role='alert' className="text-warning">{errors.photo.message}</p>}
 
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text">Description</span>
                         </label>
-                        <input className="input input-bordered w-full max-w-xs" type='password' {...register("password", {
-                            required: 'Password is required',
-                            minLength: { value: 6, message: 'password must be 6 char long' },
-                            pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'password must be strong' }
-                        })} />
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("description", { required: 'Email is required' })} type='text'
+                        />
                     </div>
-                    {errors.password && <p role='alert' className="text-warning">{errors.password.message}</p>}
+                    {errors.description && <p role='alert' className="text-warning">{errors.description.message}</p>}
 
 
                     <input className="btn bg-amber-900 text-white w-1/2 my-4" value='Sign up' type="submit" />
