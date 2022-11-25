@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../About/About";
 import Blogs from "../Components/Blogs/Blogs";
+import DisplayError from "../Components/DisplayError/DisplayError";
 import Home from "../Components/Home/Home";
 import AddProduct from "../DashBoard/AddProduct/AddProduct";
 import AllBuyers from "../DashBoard/AllBuyers/AllBuyers";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -39,12 +41,17 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/*',
+                element: <div>Nai re vai...</div>
             }
         ]
     },
     {
         path: '/dashboard',
         element: <DashBoardLayout></DashBoardLayout>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard/myorders',
@@ -74,6 +81,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/reporteditems',
                 element: <ReportedItems></ReportedItems>
             },
+            {
+                path: '/dashboard/*',
+                element: <div>Nai re vai...</div>
+            }
         ]
     }
 ])

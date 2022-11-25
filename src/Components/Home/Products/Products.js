@@ -21,7 +21,7 @@ const Products = () => {
                             <p><b>Original Price</b></p>
                         </div>
                         <p><b>Years of use</b></p>
-                        <p><b>Condition</b></p>
+                        <p><b>Years of use</b></p>
                         <div className='flex justify-start items-center gap-1'>
                             <MdVerified></MdVerified><p><b>Seller name</b></p>
                         </div>
