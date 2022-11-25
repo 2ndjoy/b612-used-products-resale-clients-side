@@ -2,6 +2,7 @@ import React from 'react';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import kitchen1 from '../../../assets/kitchen1.avif';
 import Gallery from '../../Gallery/Gallery';
+import BookingModal from './BookingModal';
 
 const Products = () => {
     return (
@@ -15,9 +16,9 @@ const Products = () => {
                         <h2 className="card-title">Shoes!</h2>
                         <p>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="card-actions justify-center">
-                            <PrimaryButton
-                                classes='w-full px-4 py-2 tracking-wide transition-colors duration-300 transform rounded-md'
-                            >Buy now</PrimaryButton>
+                            <label htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
+                            <BookingModal></BookingModal>
+
                         </div>
                     </div>
                 </div>

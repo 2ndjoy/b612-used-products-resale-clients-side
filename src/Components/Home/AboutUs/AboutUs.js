@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import furnimg from './furnimg.avif';
 import furnimg2 from './furnimg2.avif';
@@ -17,9 +18,11 @@ const AboutUs = () => {
                         <br /> <br />
                         I verify that your documents are sufficient and guide you on your CV. I help you to get a scholarship or admission to a university. I have been doing this for 4 years
                     </p>
-                    <PrimaryButton
-                        classes='w-full px-4 py-2 tracking-wide transition-colors duration-300 transform rounded-md'
-                    >Get More Info</PrimaryButton>
+                    <Link to='/about'>
+                        <PrimaryButton
+                            classes='w-full px-4 py-2 tracking-wide transition-colors duration-300 transform rounded-md'
+                        >Get More Info</PrimaryButton>
+                    </Link>
                 </div>
             </div>
         </div >
