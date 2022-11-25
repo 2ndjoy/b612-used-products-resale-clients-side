@@ -1,8 +1,9 @@
 import React from 'react';
-import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import kitchen1 from '../../../assets/kitchen1.avif';
 import Gallery from '../../Gallery/Gallery';
 import BookingModal from './BookingModal';
+import { MdVerified } from 'react-icons/md';
+
 
 const Products = () => {
     return (
@@ -13,8 +14,18 @@ const Products = () => {
                         img={kitchen1}
                     ></Gallery> </figure>
                     <div className="card-body">
-                        <h2 className="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <h2 className="card-title">Shoes! </h2>
+                        <p><b>Location</b></p>
+                        <div className='flex'>
+                            <p><b>Price</b></p>
+                            <p><b>Original Price</b></p>
+                        </div>
+                        <p><b>Years of use</b></p>
+                        <p><b>Condition</b></p>
+                        <div className='flex justify-start items-center gap-1'>
+                            <MdVerified></MdVerified><p><b>Seller name</b></p>
+                        </div>
+
                         <div className="card-actions justify-center">
                             <label htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
                             <BookingModal></BookingModal>

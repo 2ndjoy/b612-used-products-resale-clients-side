@@ -17,36 +17,47 @@ const AddProduct = () => {
                             <span className="label-text">Product Name</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("name", { required: 'Name is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" {...register("productName", { required: 'Name is required' })} type='text'
                         />
                     </div>
-                    {errors.name && <p role='alert' className="text-warning">{errors.name.message}</p>}
+                    {errors.productName && <p role='alert' className="text-warning">{errors.productName.message}</p>}
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("price", { required: 'Email is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" {...register("sellingPrice", { required: 'Price is required' })} type='text'
                         />
                     </div>
-                    {errors.price && <p role='alert' className="text-warning">{errors.price.message}</p>}
+                    {errors.sellingPrice && <p role='alert' className="text-warning">{errors.sellingPrice.message}</p>}
+
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Original Price</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("originalPrice", { required: 'Original price is required' })} type='text'
+                        />
+                    </div>
+                    {errors.originalPrice && <p role='alert' className="text-warning">{errors.originalPrice.message}</p>}
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Condition</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("condition", { required: 'Email is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" {...register("productCondition", { required: 'Condition is required' })} type='text'
                         />
                     </div>
-                    {errors.condition && <p role='alert' className="text-warning">{errors.condition.message}</p>}
+                    {errors.productCondition && <p role='alert' className="text-warning">{errors.productCondition.message}</p>}
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Phone number</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("sellerPhoneNumber", { required: 'Email is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" {...register("sellerPhoneNumber", { required: 'Phone number is required' })} type='text'
                         />
                     </div>
                     {errors.sellerPhoneNumber && <p role='alert' className="text-warning">{errors.sellerPhoneNumber.message}</p>}
@@ -65,13 +76,41 @@ const AddProduct = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
+                            <span className="label-text">Category</span>
+                        </label>
+                        <select className="select input-bordered w-full max-w-xs" {...register("productCategory", { required: 'Category is required' })}>
+                            <option disabled selected>Select a Category</option>
+                            <option value="kitchen">Kitchen</option>
+                            <option value="dining">Dining</option>
+                            <option value="living">Living</option>
+                        </select>
+                    </div>
+
+
+                    {errors.productCategory && <p role='alert' className="text-warning">{errors.productCategory.message}</p>}
+
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Year of purchase</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("purchaseYear", { required: 'Year of purchase is required' })} type='text'
+                        />
+                    </div>
+                    {errors.purchaseYear && <p role='alert' className="text-warning">{errors.purchaseYear.message}</p>}
+
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
                             <span className="label-text">Description</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" {...register("description", { required: 'Email is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" {...register("description", { required: 'Description is required' })} type='text'
                         />
                     </div>
                     {errors.description && <p role='alert' className="text-warning">{errors.description.message}</p>}
+
 
 
                     <input className="btn bg-amber-900 text-white w-1/2 my-4" value='Sign up' type="submit" />
