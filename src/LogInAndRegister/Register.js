@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
 
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setsignUpError] = useState('');
@@ -12,21 +16,51 @@ const Register = () => {
     const imageHostKEy = process.env.REACT_APP_IMGB_APIKEY;
     console.log(imageHostKEy);
     const handleSignUp = (data) => {
-        // console.log(imageHostKEy)
-        // const photo = data.photo[0];
-        // const formData = new FormData();
-        // formData.append('image', photo);
+        console.log(imageHostKEy)
+        const photo = data.photo[0];
+        const formData = new FormData();
+        formData.append('image', photo);
 
-        // const url = `https://api.imgbb.com/1/upload?key=${imageHostKEy}`
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(data => console.log(data))
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKEy}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                createUser(data.email, data.password)
+                    .then(result => {
+                        const user = result.user;
+                        console.log(user)
+                        saveUser(data.name, data.email, data.role);
+                        updateUserProfile(data.name, imgData.data.display_url)
+                            .then(
+                                toast.success("user created successfully")
+                            )
+                            .catch(err =>
+                                console.log(err)
+                            )
+                    })
+            })
         console.log(data)
     }
 
+    const saveUser = (email, name, role) => {
+        const user = { email, name, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // setCreatedUserEmail(email);
+                console.log(data)
+            })
+
+    }
 
 
     return (

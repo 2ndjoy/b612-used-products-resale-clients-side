@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import KatherGhor from '../../../assets/KatherGhor.png';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handlelogout = () => {
+        logOut();
+    }
+
+
+
 
     return (
 
@@ -31,17 +39,22 @@ const Navbar = () => {
 
                 </ul>
             </div>
-            <div className="navbar-end lg:mr-24 mr-10">
-                <div className="dropdown dropdown-end">
+            <div className="navbar-end">
+                {user?.email ? <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img alt="" src='' />
+                            <img alt="" src={user?.photoURL} />
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        <li className="mt-2"><button className="btn btn-sm bg-amber-900 text-white btn-outline" >Logout</button></li>
+                        <li>
+                            <Link to='/dashboard' className="justify-between">
+                                Go to Dashboard
+                            </Link>
+                        </li>
+                        <li className="mt-2"><button className="btn btn-sm btn-outline" onClick={handlelogout}>Logout</button></li>
                     </ul>
-                </div> : <button className="btn btn-sm bg-amber-900 text-white btn-outline" ><Link to='/login'>Log in</Link></button>
+                </div> : <button className="btn btn-sm btn-outline" ><Link to='/login'>Log in</Link></button>}
             </div>
 
         </div >
