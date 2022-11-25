@@ -3,6 +3,7 @@ import About from "../About/About";
 import Blogs from "../Components/Blogs/Blogs";
 import DisplayError from "../Components/DisplayError/DisplayError";
 import Home from "../Components/Home/Home";
+import Products from "../Components/Home/Products/Products";
 import AddProduct from "../DashBoard/AddProduct/AddProduct";
 import AllBuyers from "../DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../DashBoard/AllSellers/AllSellers";

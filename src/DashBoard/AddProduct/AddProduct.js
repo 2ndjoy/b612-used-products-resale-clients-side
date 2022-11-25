@@ -1,17 +1,78 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const handleSignUp = (data) => {
+    const { user } = useContext(AuthContext);
+
+    const imageHostKEy = process.env.REACT_APP_IMGB_APIKEY;
+
+    const handleAddProduct = (data) => {
         console.log(data);
+
+        const photo = data.photo[0];
+        const formData = new FormData();
+        formData.append('image', photo);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKEy}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    const product = {
+                        productName: data.productName,
+                        productCondition: data.productCondition,
+                        purchaseYear: data.purchaseYear,
+                        productCategory: data.productCategory,
+                        description: data.description,
+                        productImage: imgData.data.display_url,
+                        originalPrice: data.originalPrice,
+                        sellingPrice: data.sellingPrice,
+                        sellerPhoneNumber: data.sellerPhoneNumber,
+                        sellerName: data.sellerName
+                    }
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.acknowledged) {
+                                toast.success(`Added to the database successfully`);
+                                // navigate('/dashbord/managedoctors');
+                            }
+                        })
+
+                }
+            })
+
+
+
     }
     return (
         <div className='grid justify-center py-11'>
 
             <div className='w-96 p-7'>
                 <h2 className='text-3xl font bold text-center mt-11 mb-9'>Add product</h2>
-                <form onSubmit={handleSubmit(handleSignUp)}>
+                <form onSubmit={handleSubmit(handleAddProduct)}>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Seller Name</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" defaultValue={user?.displayName} readOnly {...register("sellerName", { required: 'Seller Name is required' })} type='text'
+                        />
+                    </div>
+                    {errors.sellerName && <p role='alert' className="text-warning">{errors.sellerName.message}</p>}
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Product Name</span>
@@ -76,11 +137,10 @@ const AddProduct = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Category</span>
+                            <span className="label-text">Select a Category</span>
                         </label>
                         <select className="select input-bordered w-full max-w-xs" {...register("productCategory", { required: 'Category is required' })}>
-                            <option disabled selected>Select a Category</option>
-                            <option value="kitchen">Kitchen</option>
+                            <option disabled selected value="kitchen">Kitchen</option>
                             <option value="dining">Dining</option>
                             <option value="living">Living</option>
                         </select>
