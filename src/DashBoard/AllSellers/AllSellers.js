@@ -1,17 +1,35 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllSellers = () => {
 
     const { data: allSellers = [] } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('http://localhost:5000/users/seller');
             const data = await res.json();
             return data;
         }
     })
     console.log(allSellers);
+
+
+    const handleReport = (id) => {
+        fetch(`http://localhost:5000/users/seller/${id}`, {
+            method: 'PUT',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Verified successfully')
+
+                }
+            })
+    }
 
     return (
         <div className='py-12 my-5'>
@@ -23,7 +41,7 @@ const AllSellers = () => {
 
                             <th>Name</th>
                             <th>Job</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +53,7 @@ const AllSellers = () => {
                                     <td>{allSeller.name} </td>
                                     <td>{allSeller.email} </td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
+                                        {allSeller.verify ? <p>Verified</p> : <button onClick={() => handleReport(allSeller._id)} className="btn bg-green-500 text-white border-none btn-xs">Verify</button>}
                                     </th>
                                 </tr>
                             )

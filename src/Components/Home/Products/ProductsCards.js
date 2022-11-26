@@ -2,12 +2,30 @@ import React from 'react';
 import BookingModal from './BookingModal';
 import { MdVerified } from 'react-icons/md';
 import Gallery from '../../Gallery/Gallery';
+import toast from 'react-hot-toast';
 
 
 
 const ProductsCards = ({ product, setProductt }) => {
-    const { productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice } = product;
+    const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice } = product;
     console.log(product);
+
+
+    const handleReport = (id) => {
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'PUT',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Reported successfully')
+
+                }
+            })
+    }
 
     return (
 
@@ -27,9 +45,9 @@ const ProductsCards = ({ product, setProductt }) => {
                     <MdVerified></MdVerified><p><b>{sellerName}</b></p>
                 </div>
 
-                <div className="card-actions justify-center">
+                <div className="card-actions items-center justify-center">
                     <label onClick={setProductt(product)} htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
-
+                    <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>
                 </div>
             </div>
         </div>
