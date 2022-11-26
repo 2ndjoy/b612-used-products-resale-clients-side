@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Myorders = () => {
+    const { user } = useContext(AuthContext);
     const { data: myOrders = [] } = useQuery({
         queryKey: ['myOrders'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/booking');
+            const res = await fetch(`http://localhost:5000/booking?email=${user.email}`);
             const data = await res.json();
             return data;
         }

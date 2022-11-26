@@ -7,7 +7,7 @@ import { AuthContext } from '../Context/AuthProvider';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [createdemail, setCreatedemail] = useState('');
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setsignUpError] = useState('');
@@ -56,7 +56,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // setCreatedUserEmail(email);
+                // setCreatedemail(email);
                 console.log(data)
             })
 

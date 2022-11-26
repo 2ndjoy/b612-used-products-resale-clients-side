@@ -9,14 +9,14 @@ const BookingModal = ({ productt, setProductt }) => {
         event.preventDefault();
         const form = event.target;
         const buyerName = form.userName.value;
-        const userEmail = form.userEmail.value;
+        const email = form.email.value;
         const productName = form.productName.value;
         const productPrice = form.productPrice.value;
         const meetingLocation = form.meetingLocation.value;
         const userPhone = form.userPhone.value;
 
         const booking = {
-            buyerName, userEmail, productName, productPrice, meetingLocation, userPhone, productImage
+            buyerName, email, productName, productPrice, meetingLocation, userPhone, productImage
         }
 
         console.log(booking);
@@ -50,7 +50,7 @@ const BookingModal = ({ productt, setProductt }) => {
 
                         <input name="userName" type="text" placeholder="Your Name" defaultValue={user?.displayName} readOnly className="input w-full input-bordered" />
 
-                        <input name="userEmail" type="email" placeholder="Email Address" defaultValue={user?.email} readOnly className="input w-full input-bordered" />
+                        <input name="email" type="email" placeholder="Email Address" defaultValue={user?.email} readOnly className="input w-full input-bordered" />
 
                         <input name="productName" type="text" placeholder="Product Name" defaultValue={productt.productName} readOnly className="input w-full input-bordered" />
 

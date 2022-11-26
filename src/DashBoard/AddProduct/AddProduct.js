@@ -33,7 +33,8 @@ const AddProduct = () => {
                         originalPrice: data.originalPrice,
                         sellingPrice: data.sellingPrice,
                         sellerPhoneNumber: data.sellerPhoneNumber,
-                        sellerName: data.sellerName
+                        sellerName: data.sellerName,
+                        email: user.email
                     }
                     fetch('http://localhost:5000/products', {
                         method: 'POST',
@@ -173,7 +174,7 @@ const AddProduct = () => {
 
 
 
-                    <input className="btn bg-amber-900 text-white w-1/2 my-4" value='Sign up' type="submit" />
+                    <input className="btn bg-amber-900 text-white w-1/2 my-4" value='Add Product' type="submit" />
 
 
                 </form>

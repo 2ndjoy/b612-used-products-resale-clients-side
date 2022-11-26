@@ -9,7 +9,7 @@ import ProductsCards from './ProductsCards';
 
 const Products = () => {
     const [productt, setProductt] = useState(null);
-    const { data: productss = [] } = useQuery({
+    const { data: productss = [], refetch } = useQuery({
         queryKey: ['productss'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/products');
@@ -27,6 +27,7 @@ const Products = () => {
                         key={product._id}
                         product={product}
                         setProductt={setProductt}
+                        refetch={refetch}
                     ></ProductsCards>
                 )
 

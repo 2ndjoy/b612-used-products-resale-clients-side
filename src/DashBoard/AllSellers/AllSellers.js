@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const AllSellers = () => {
 
-    const { data: allSellers = [] } = useQuery({
+    const { data: allSellers = [], refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users/seller');
@@ -26,7 +26,7 @@ const AllSellers = () => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
                     toast.success('Verified successfully')
-
+                    refetch();
                 }
             })
     }

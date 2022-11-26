@@ -6,8 +6,8 @@ import toast from 'react-hot-toast';
 
 
 
-const ProductsCards = ({ product, setProductt }) => {
-    const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice } = product;
+const ProductsCards = ({ product, setProductt, refetch }) => {
+    const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice, report } = product;
     console.log(product);
 
 
@@ -22,7 +22,7 @@ const ProductsCards = ({ product, setProductt }) => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
                     toast.success('Reported successfully')
-
+                    refetch();
                 }
             })
     }
@@ -47,7 +47,7 @@ const ProductsCards = ({ product, setProductt }) => {
 
                 <div className="card-actions items-center justify-center">
                     <label onClick={setProductt(product)} htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
-                    <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>
+                    {report ? <p>Reported </p> : <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>}
                 </div>
             </div>
         </div>

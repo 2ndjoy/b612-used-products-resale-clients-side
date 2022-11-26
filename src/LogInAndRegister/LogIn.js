@@ -9,7 +9,7 @@ const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
     const { signIn, forgetPassword } = useContext(AuthContext);
-    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [loginemail, setLoginemail] = useState('')
 
 
     const handleLogin = data => {
@@ -19,7 +19,7 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(data.email);
+                setLoginemail(data.email);
             })
             .catch(error => {
                 console.log(error.message)
