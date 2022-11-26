@@ -5,7 +5,7 @@ import Gallery from '../../Gallery/Gallery';
 
 
 
-const ProductsCards = ({ product }) => {
+const ProductsCards = ({ product, setProductt }) => {
     const { productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice } = product;
     console.log(product);
 
@@ -28,8 +28,7 @@ const ProductsCards = ({ product }) => {
                 </div>
 
                 <div className="card-actions justify-center">
-                    <label htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
-                    <BookingModal></BookingModal>
+                    <label onClick={setProductt(product)} htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
 
                 </div>
             </div>

@@ -102,7 +102,7 @@ const Register = () => {
                             <span className="label-text">Want to Join as a seller</span>
                         </label>
                         <select className="select input-bordered w-full max-w-xs" {...register("role")}>
-                            <option disabled selected>Select a role</option>
+                            <option value="buyer" disabled selected>Select a role</option>
                             <option value="seller">Seller</option>
                             <option value="buyer">No, I am just here to buy</option>
 

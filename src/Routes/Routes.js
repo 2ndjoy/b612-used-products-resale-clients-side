@@ -3,6 +3,7 @@ import About from "../About/About";
 import Blogs from "../Components/Blogs/Blogs";
 import DisplayError from "../Components/DisplayError/DisplayError";
 import Home from "../Components/Home/Home";
+import BookingModal from "../Components/Home/Products/BookingModal";
 import Products from "../Components/Home/Products/Products";
 import AddProduct from "../DashBoard/AddProduct/AddProduct";
 import AllBuyers from "../DashBoard/AllBuyers/AllBuyers";
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
                 path: '/blogs',
                 element: <Blogs></Blogs>
             },
+            // {
+            //     path: '/products/:id',
+            //     element: <BookingModal></BookingModal>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+            // },
             {
                 path: '/*',
                 element: <div>Nai re vai...</div>

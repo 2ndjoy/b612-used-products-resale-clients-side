@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import kitchen1 from '../../../assets/kitchen1.avif';
 import Gallery from '../../Gallery/Gallery';
 import BookingModal from './BookingModal';
@@ -8,6 +8,7 @@ import ProductsCards from './ProductsCards';
 
 
 const Products = () => {
+    const [productt, setProductt] = useState(null);
     const { data: productss = [] } = useQuery({
         queryKey: ['productss'],
         queryFn: async () => {
@@ -25,8 +26,16 @@ const Products = () => {
                     <ProductsCards
                         key={product._id}
                         product={product}
+                        setProductt={setProductt}
                     ></ProductsCards>
                 )
+
+            }{
+                productt &&
+                <BookingModal
+                    productt={productt}
+                    setProductt={setProductt}
+                ></BookingModal>
 
             }
         </div>
