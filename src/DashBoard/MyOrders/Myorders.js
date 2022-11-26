@@ -10,7 +10,6 @@ const Myorders = () => {
             return data;
         }
     })
-    console.log(myOrders);
 
     return (
         <div className='py-12 my-5'>
