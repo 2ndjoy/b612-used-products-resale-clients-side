@@ -7,7 +7,7 @@ const AllSellers = () => {
     const { data: allSellers = [], refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/seller');
+            const res = await fetch('https://b612-used-products-resale-server-side-ten.vercel.app/user/seller');
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const AllSellers = () => {
 
 
     const handleReport = (id) => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/users/seller/${id}`, {
             method: 'PUT',
 
         })

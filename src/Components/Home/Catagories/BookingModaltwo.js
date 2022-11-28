@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 
@@ -25,7 +26,7 @@ const BookingModaltwo = ({ product }) => {
 
         console.log(booking);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://b612-used-products-resale-server-side-ten.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -66,7 +67,8 @@ const BookingModaltwo = ({ product }) => {
                         <input name="userPhone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                         <br />
 
-                        <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                        {user?.email ? <input className='btn btn-accent w-full' type="submit" value="Submit" /> : <Link className='btn btn-accent' to="/login">Please log in to book a order</Link>}
+
                     </form>
                 </div>
             </div>

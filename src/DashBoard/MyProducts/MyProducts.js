@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const MyProducts = () => {
@@ -13,6 +14,66 @@ const MyProducts = () => {
             return data;
         }
     })
+    // const handleDelete = (id) => {
+    //     console.log(id)
+    // }
+
+
+    const handleAdvertise = (id) => {
+        fetch(`http://localhost:5000/advertise/${id}`, {
+            method: 'PUT',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+                if (data.acknowledged) {
+                    toast.success('Advertised successfully')
+                }
+            })
+        console.log(id);
+    }
+    const handleSold = (id) => {
+        fetch(`http://localhost:5000/sold/${id}`, {
+            method: 'PUT',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+                if (data.acknowledged) {
+                    toast.success('Thanks for using Kather Ghor')
+                }
+            })
+        console.log(id);
+    }
+
+
+
+    const handleDelete = (id) => {
+        console.log(id);
+
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'DELETE'
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    toast.success(`Deleted Successfully`);
+                    refetch();
+                }
+            })
+
+
+
+    }
 
     console.log(myProductss);
 
@@ -22,7 +83,7 @@ const MyProducts = () => {
                 <table className="table w-full">
 
                     <thead>
-                        <tr>
+                        {myProductss.length === 0 ? <p className='mx-24 p-24 font-bold'>You have not advertise any product</p> : <tr>
                             <th>
 
                             </th>
@@ -30,7 +91,8 @@ const MyProducts = () => {
                             <th>Price</th>
                             <th></th>
                             <th></th>
-                        </tr>
+                            <th></th>
+                        </tr>}
                     </thead>
                     <tbody>
 
@@ -52,11 +114,16 @@ const MyProducts = () => {
                                         {myProduct.sellingPrice}
                                     </td>
                                     <td>
-                                        <button className="btn btn-success btn-xs">Advertise</button>
+                                        <button onClick={() => handleAdvertise(myProduct._id)} className="btn btn-success btn-xs">Advertise</button>
                                     </td>
                                     <th>
-                                        <button className="btn btn-secondary btn-xs">Sold</button>
+                                        <button onClick={() => handleSold(myProduct._id)} className="btn btn-secondary btn-xs">Sold</button>
                                     </th>
+                                    <th>
+                                        <button onClick={() => handleDelete(myProduct._id)} className="btn btn-secondary btn-xs">Delete</button>
+
+                                    </th>
+
                                 </tr>
                             )
                         }

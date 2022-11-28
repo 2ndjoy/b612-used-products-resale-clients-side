@@ -11,7 +11,7 @@ const DashBoardLayout = () => {
     const { data: userRole = [] } = useQuery({
         queryKey: ['userRole'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user?email=${user?.email}`);
+            const res = await fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/user?email=${user?.email}`);
             const data = await res.json();
             return data;
         }

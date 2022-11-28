@@ -38,7 +38,7 @@ const AddProduct = () => {
                         sellerName: data.sellerName,
                         email: user.email
                     }
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://b612-used-products-resale-server-side-ten.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -71,7 +71,7 @@ const AddProduct = () => {
                             <span className="label-text">Seller Name</span>
                         </label>
                         <input
-                            className="input input-bordered w-full max-w-xs" defaultValue={user?.displayName} readOnly {...register("sellerName", { required: 'Seller Name is required' })} type='text'
+                            className="input input-bordered w-full max-w-xs" defaultValue={user?.displayName} {...register("sellerName", { required: 'Seller Name is required' })} type='text'
                         />
                     </div>
                     {errors.sellerName && <p role='alert' className="text-warning">{errors.sellerName.message}</p>}

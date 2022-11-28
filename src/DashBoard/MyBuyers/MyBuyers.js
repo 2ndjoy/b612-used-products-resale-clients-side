@@ -24,7 +24,7 @@ const MyBuyers = () => {
                 <table className="table w-full">
 
                     <thead>
-                        <tr>
+                        {myBuyers.length === 0 ? <p className='mx-24 p-24 font-bold'>You dont have any buyers</p> : <tr>
                             <th>
 
                             </th>
@@ -32,7 +32,7 @@ const MyBuyers = () => {
                             <th>Buyer Email</th>
                             <th>Buyer Phone</th>
                             <th></th>
-                        </tr>
+                        </tr>}
                     </thead>
                     <tbody>
 

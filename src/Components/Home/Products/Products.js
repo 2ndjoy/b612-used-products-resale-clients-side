@@ -13,7 +13,7 @@ const Products = () => {
     const { data: productss = [], refetch } = useQuery({
         queryKey: ['productss'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+            const res = await fetch('http://localhost:5000/products/advertise');
             const data = await res.json();
             return data;
         }
@@ -21,7 +21,7 @@ const Products = () => {
     console.log(productss);
 
     return (
-        <div className='lg:grid md:grid justify-center gap-5 lg:grid-cols-3 md:grid-cols-2 px-3'>
+        <div className='lg:grid md:grid justify-center gap-5 lg:grid-cols-3 md:grid-cols-2 ml-4 px-3'>
             {
                 productss.map(product =>
                     <ProductsCards

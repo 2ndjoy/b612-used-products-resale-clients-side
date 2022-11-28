@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BookingModal from './BookingModal';
 import { MdVerified } from 'react-icons/md';
 import Gallery from '../../Gallery/Gallery';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 
 
 const ProductsCards = ({ product, setProductt, refetch }) => {
+    const { user } = useContext(AuthContext);
     const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice, report } = product;
     console.log(product);
 
 
     const handleReport = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/products/${id}`, {
             method: 'PUT',
 
         })
@@ -25,6 +27,9 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
                     refetch();
                 }
             })
+    }
+    const handleToast = () => {
+        toast.error('Please log in first')
     }
 
     return (
@@ -47,7 +52,7 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
 
                 <div className="card-actions items-center justify-center">
                     <label onClick={setProductt(product)} htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
-                    <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>
+                    {user?.email ? <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button> : <button onClick={handleToast} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>}
                 </div>
             </div>
         </div>

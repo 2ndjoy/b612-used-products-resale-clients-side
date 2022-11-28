@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             // {
             //     path: '/products/:id',
             //     element: <BookingModal></BookingModal>,
-            //     loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+            //     loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/products/${params.id}`)
             // },
             {
                 path: '/*',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
             {
                 path: '/catagories/:id',
                 element: <ProductsByCategory></ProductsByCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/categories/${params.id}`)
             }
         ]
     },
