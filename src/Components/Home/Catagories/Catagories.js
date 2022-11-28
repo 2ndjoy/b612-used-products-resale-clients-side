@@ -16,7 +16,7 @@ const Catagories = () => {
     console.log('catagory', catagories);
     return (
         <div className='my-5'>
-            <div className='lg:flex lg:mx-0 mx-5 justify-center gap-4'>
+            <div className='lg:flex mx-2 justify-center gap-4'>
                 {
                     catagories.map(category => <div className="card w-96 my-5 bg-amber-900 shadow-xl text-white">
                         <div className="card-body">

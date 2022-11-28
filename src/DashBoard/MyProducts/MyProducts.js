@@ -9,7 +9,7 @@ const MyProducts = () => {
     const { data: myProductss = [], refetch } = useQuery({
         queryKey: ['myProductss'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products?email=${user.email}`);
+            const res = await fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/products?email=${user.email}`);
             const data = await res.json();
             return data;
         }
@@ -20,7 +20,7 @@ const MyProducts = () => {
 
 
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/advertise/${id}`, {
+        fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/advertise/${id}`, {
             method: 'PUT',
 
         })
@@ -34,8 +34,12 @@ const MyProducts = () => {
             })
         console.log(id);
     }
+
+
+
+
     const handleSold = (id) => {
-        fetch(`http://localhost:5000/sold/${id}`, {
+        fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/sold/${id}`, {
             method: 'PUT',
 
         })
@@ -55,7 +59,7 @@ const MyProducts = () => {
     const handleDelete = (id) => {
         console.log(id);
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/products/${id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

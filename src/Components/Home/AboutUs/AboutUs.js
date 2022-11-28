@@ -13,10 +13,12 @@ const AboutUs = () => {
                     <img alt='' src={furnimg2} className="absolute w-3/5 right-5 border-8 border-amber-900 top-1/2 rounded-full shadow-2xl" />
                 </div>
                 <div className='w-1/2'>
-                    <h1 className="text-5xl my-5 text-amber-800 font-bold">I am qualified <br />  & of experience <br /> in this field</h1>
-                    <p className="py-6 text-amber-900">I gather information and research based on your choice (scholarship or without scholarship). Also I help you by guiding and providing information
+                    <h1 className="text-5xl my-5 text-amber-800 font-bold">Wellcome  <br />  to Kather Ghor</h1>
+                    <p className="py-6 text-amber-900">Here you can find good used Furnitures
                         <br /> <br />
-                        I verify that your documents are sufficient and guide you on your CV. I help you to get a scholarship or admission to a university. I have been doing this for 4 years
+                        Here are a lots of seller and buyer who wants to sell or buy good products.
+                        <br />
+                        We make sure that your products get a good price. Also a you can get your products with a reasonable budget
                     </p>
                     <Link to='/about'>
                         <PrimaryButton

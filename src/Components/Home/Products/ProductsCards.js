@@ -9,7 +9,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const ProductsCards = ({ product, setProductt, refetch }) => {
     const { user } = useContext(AuthContext);
-    const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellingPrice, report } = product;
+    const { _id, productImage, sellerName, productName, purchaseYear, productCondition, description, originalPrice, sellerLocation, sellingPrice, report } = product;
     console.log(product);
 
 
@@ -42,12 +42,13 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
                 ></Gallery> </figure>
             <div className="card-body gap-0">
                 <h2 className="card-title">{productName} </h2>
-                <p><b>Location: { }</b></p>
+                <p><b>Location: {sellerLocation}</b></p>
                 <p><b>Selling Price: ${sellingPrice}</b></p>
                 <p><b>Original Price: ${originalPrice}</b></p>
+                <p><b>Product Condition: {productCondition}</b></p>
                 <p><b>Purchase Year: {purchaseYear}</b></p>
                 <div className='flex justify-start items-center gap-1'>
-                    <MdVerified></MdVerified><p><b>{sellerName}</b></p>
+                    <MdVerified className='text-blue-600'></MdVerified><p><b>{sellerName}</b></p>
                 </div>
 
                 <div className="card-actions items-center justify-center">

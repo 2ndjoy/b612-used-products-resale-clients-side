@@ -13,7 +13,7 @@ const Products = () => {
     const { data: productss = [], refetch } = useQuery({
         queryKey: ['productss'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products/advertise');
+            const res = await fetch('https://b612-used-products-resale-server-side-ten.vercel.app/products/advertise');
             const data = await res.json();
             return data;
         }

@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        // errorElement: <DisplayError></DisplayError>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -46,14 +46,9 @@ const router = createBrowserRouter([
                 path: '/blogs',
                 element: <Blogs></Blogs>
             },
-            // {
-            //     path: '/products/:id',
-            //     element: <BookingModal></BookingModal>,
-            //     loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-ten.vercel.app/products/${params.id}`)
-            // },
             {
                 path: '/*',
-                element: <div>Nai re vai...</div>
+                element: <div><img className="mx-auto my-5" src="https://storytale-public2.b-cdn.net/2021/08/16/d76e6bc7-1768-499c-8b14-33313216ca3d-Error404.png?height=820" alt="" /></div>
             },
             {
                 path: '/catagories/:id',

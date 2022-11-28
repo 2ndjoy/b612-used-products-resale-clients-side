@@ -36,6 +36,7 @@ const AddProduct = () => {
                         sellingPrice: data.sellingPrice,
                         sellerPhoneNumber: data.sellerPhoneNumber,
                         sellerName: data.sellerName,
+                        sellerLocation: data.sellerLocation,
                         email: user.email
                     }
                     fetch('https://b612-used-products-resale-server-side-ten.vercel.app/products', {
@@ -52,7 +53,7 @@ const AddProduct = () => {
                                 navigate('/dashboard/myproducts')
                             }
                         })
-
+                    console.log(product)
                 }
             })
 
@@ -105,6 +106,22 @@ const AddProduct = () => {
                         />
                     </div>
                     {errors.originalPrice && <p role='alert' className="text-warning">{errors.originalPrice.message}</p>}
+
+
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Your Location</span>
+                        </label>
+                        <input
+                            className="input input-bordered w-full max-w-xs" {...register("sellerLocation", { required: 'Location is required' })} type='text'
+                        />
+                    </div>
+                    {errors.sellerLocation && <p role='alert' className="text-warning">{errors.sellerLocation.message}</p>}
+
+
+
+
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
