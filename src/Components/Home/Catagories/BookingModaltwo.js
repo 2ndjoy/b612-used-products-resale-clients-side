@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
-const BookingModal = ({ productt, setProductt }) => {
-    const { productImage, email } = productt;
-    const { user } = useContext(AuthContext);
 
+const BookingModaltwo = ({ product }) => {
+    const { productImage, email } = product;
+    const { user } = useContext(AuthContext);
+    console.log(product)
     const sellerEmail = email;
 
     const handleBOoking = (event) => {
@@ -44,25 +45,27 @@ const BookingModal = ({ productt, setProductt }) => {
 
     return (
         <div>
-            <input type="checkbox" id="booking-modal" className="modal-toggle" />
+            <input type="checkbox" id="booking-modal2" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="booking-modal2" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">Name</h3>
                     <form onSubmit={handleBOoking} className='grid grid-cols-1 gap-3 mt-10'>
 
                         <input name="userName" type="text" placeholder="Your Name" defaultValue={user?.displayName} readOnly className="input w-full input-bordered" />
 
-                        <input name="email" type="email" placeholder="Email Address" defaultValue={user?.email} readOnly className="input w-full input-bordered" />
+                        <input name="email" type="email" placeholder="Email Address" defaultValue={user?.email} readOnly lassName="input w-full input-bordered" />
 
-                        <input name="productName" type="text" placeholder="Product Name" defaultValue={productt.productName} readOnly className="input w-full input-bordered" />
 
-                        <input name="productPrice" type="text" placeholder="Price" defaultValue={productt.sellingPrice} readOnly className="input w-full input-bordered" />
+                        <input name="productName" type="text" placeholder="Product Name" defaultValue={product.productName} readOnly className="input w-full input-bordered" />
+
+                        <input name="productPrice" type="text" placeholder="Price" defaultValue={product.sellingPrice} readOnly className="input w-full input-bordered" />
 
                         <input name="meetingLocation" type="text" placeholder="Meeting Location" className="input w-full input-bordered" />
 
                         <input name="userPhone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                         <br />
+
                         <input className='btn btn-accent w-full' type="submit" value="Submit" />
                     </form>
                 </div>
@@ -71,4 +74,4 @@ const BookingModal = ({ productt, setProductt }) => {
     );
 };
 
-export default BookingModal;
+export default BookingModaltwo;

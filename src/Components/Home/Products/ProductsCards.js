@@ -20,7 +20,7 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
             .then(data => {
 
                 console.log(data)
-                if (data.modifiedCount > 0) {
+                if (data.acknowledged) {
                     toast.success('Reported successfully')
                     refetch();
                 }
@@ -29,8 +29,8 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
 
     return (
 
-        <div className="card card-compact my-5 w-96 bg-base-100 shadow-xl">
-            <figure>
+        <div className="card card-compact my-5 w-80 bg-base-100 shadow-xl">
+            <figure className='h-44'>
                 <Gallery
                     img={productImage}
 
@@ -47,7 +47,7 @@ const ProductsCards = ({ product, setProductt, refetch }) => {
 
                 <div className="card-actions items-center justify-center">
                     <label onClick={setProductt(product)} htmlFor="booking-modal" className='btn bg-amber-900 text-white'> Buy Now</label>
-                    {report ? <p>Reported </p> : <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>}
+                    <button onClick={() => handleReport(_id)} className='btn bg-red-500 btn-xs text-white border-none'>Report</button>
                 </div>
             </div>
         </div>

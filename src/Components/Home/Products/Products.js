@@ -5,6 +5,7 @@ import BookingModal from './BookingModal';
 import { MdVerified } from 'react-icons/md';
 import { useQuery } from '@tanstack/react-query';
 import ProductsCards from './ProductsCards';
+import Catagories from '../Catagories/Catagories';
 
 
 const Products = () => {

@@ -1,12 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const [createdemail, setCreatedemail] = useState('');
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -32,11 +37,12 @@ const Register = () => {
                     .then(result => {
                         const user = result.user;
                         console.log(user)
-                        saveUser(data.name, data.email, data.role);
+                        saveUser(data.email, data.name, data.role);
                         updateUserProfile(data.name, imgData.data.display_url)
                             .then(
                                 toast.success("user created successfully")
                             )
+                        navigate(from, { replace: true })
                             .catch(err =>
                                 console.log(err)
                             )

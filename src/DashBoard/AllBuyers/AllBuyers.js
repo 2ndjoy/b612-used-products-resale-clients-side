@@ -5,7 +5,7 @@ const AllBuyers = () => {
     const { data: allBuyers = [] } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/buyer');
+            const res = await fetch('http://localhost:5000/user/buyer');
             const data = await res.json();
             return data;
         }

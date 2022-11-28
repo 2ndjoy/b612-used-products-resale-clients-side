@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import About from "../About/About";
 import Blogs from "../Components/Blogs/Blogs";
 import DisplayError from "../Components/DisplayError/DisplayError";
+import ProductsByCategory from "../Components/Home/Catagories/ProductsByCategory";
 import Home from "../Components/Home/Home";
 import BookingModal from "../Components/Home/Products/BookingModal";
 import Products from "../Components/Home/Products/Products";
@@ -16,13 +17,14 @@ import ReportedItems from "../DashBoard/ReportedItems/ReportedItems";
 import Main from "../Layout/Main";
 import LogIn from "../LogInAndRegister/LogIn";
 import Register from "../LogInAndRegister/Register";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        errorElement: <DisplayError></DisplayError>,
+        // errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -52,17 +54,22 @@ const router = createBrowserRouter([
             {
                 path: '/*',
                 element: <div>Nai re vai...</div>
+            },
+            {
+                path: '/catagories/:id',
+                element: <ProductsByCategory></ProductsByCategory>,
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
         ]
     },
     {
         path: '/dashboard',
-        element: <DashBoardLayout></DashBoardLayout>,
+        element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard/myorders',
-                element: <Myorders></Myorders>
+                element: <PrivateRoute> <Myorders></Myorders></PrivateRoute>
             },
             {
                 path: '/dashboard/addproduct',

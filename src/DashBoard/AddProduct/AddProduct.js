@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const AddProduct = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
 
@@ -47,7 +49,7 @@ const AddProduct = () => {
                         .then(result => {
                             if (result.acknowledged) {
                                 toast.success(`Added to the database successfully`);
-                                // navigate('/dashbord/managedoctors');
+                                navigate('/dashboard/myproducts')
                             }
                         })
 
